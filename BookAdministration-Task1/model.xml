@@ -175,10 +175,27 @@
 							<description>
 								Provides keys for the User Interface.
 							</description>
-							<feature name="SearchKeys"/>
-							<feature abstract="true" name="ImportKey"/>
-							<feature abstract="true" name="ExportKey"/>
+							<feature name="SearchKey">
+								<description>
+									Key to trigger the search.
+								</description>
+							</feature>
+							<feature abstract="true" name="ImportKey">
+								<description>
+									Provides a key for the GUI to trigger the import.
+								</description>
+							</feature>
+							<feature abstract="true" name="ExportKey">
+								<description>
+									Provides a key for the GUI to trigger the export.
+								</description>
+							</feature>
 						</and>
+						<feature mandatory="true" name="Display">
+							<description>
+								Provides a display to show the book collections in raw form, sorted or the result of a search.
+							</description>
+						</feature>
 					</and>
 					<feature abstract="true" mandatory="true" name="CLI">
 						<description>
@@ -227,6 +244,18 @@
 				<imp>
 					<var>byRating</var>
 					<var>Rating</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ImportKey</var>
+					<var>Import</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ExportKey</var>
+					<var>Export</var>
 				</imp>
 			</rule>
 		</constraints>
