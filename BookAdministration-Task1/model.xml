@@ -112,7 +112,7 @@
 					</or>
 					<feature name="Search">
 						<description>
-							Searches the collection for a specific book.
+							Searches the collection for a specific book by doing a text search.
 						</description>
 					</feature>
 					<feature abstract="true" name="Import">
@@ -256,6 +256,12 @@
 				<imp>
 					<var>ExportKey</var>
 					<var>Export</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>SearchKey</var>
+					<var>Search</var>
 				</imp>
 			</rule>
 		</constraints>
