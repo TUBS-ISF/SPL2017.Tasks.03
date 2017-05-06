@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and abstract="true" mandatory="true" name="BookAdministrationTask1">
+				<description>
+					SPL to create administrationsoftware for book collections
+				</description>
+				<description>
+					SPL to create administrationsoftware for book collections
+				</description>
+				<and abstract="true" mandatory="true" name="Book">
+					<description>
+						Entity of the book.
+					</description>
+					<description>
+						Entity of the book.
+					</description>
+					<or mandatory="true" name="Information">
+						<description>
+							Informations to identify a book.
+						</description>
+						<description>
+							Informations to identify a book.
+						</description>
+						<feature mandatory="true" name="Title">
+							<description>
+								Stores the name of the book.
+							</description>
+						</feature>
+						<feature mandatory="true" name="Author">
+							<description>
+								Stores the author of the book.
+							</description>
+						</feature>
+						<feature mandatory="true" name="ISBN">
+							<description>
+								Stores the ISBN number of the book.
+							</description>
+						</feature>
+						<feature mandatory="true" name="Genre">
+							<description>
+								Stores the genre in which the book is sorted.
+							</description>
+						</feature>
+						<feature mandatory="true" name="Read">
+							<description>
+								Information if the book was already read by the user.
+							</description>
+						</feature>
+						<feature mandatory="true" name="Publisher">
+							<description>
+								Stores the publisher of the book
+							</description>
+						</feature>
+						<feature mandatory="true" name="Rating">
+							<description>
+								Rating for the book. Added with the book or afterwards.
+							</description>
+						</feature>
+					</or>
+					<feature name="addBook">
+						<description>
+							Option to add a book to the collection.
+						</description>
+					</feature>
+					<feature name="deleteBook">
+						<description>
+							Option to delete a book from the collection
+						</description>
+					</feature>
+					<feature name="RateBook">
+						<description>
+							A User can rate Books from his collection (after adding them)
+						</description>
+					</feature>
+				</and>
+				<and mandatory="true" name="Collection">
+					<description>
+						List of gatherd books to administer
+					</description>
+					<description>
+						List of gatherd books to administer
+					</description>
+					<or abstract="true" name="Sort">
+						<description>
+							Sorts the displayed list of books.
+						</description>
+						<description>
+							Sorts the displayed list of books.
+						</description>
+						<feature mandatory="true" name="byTitle">
+							<description>
+								Sorts by the titles of the books alphabetical.
+							</description>
+						</feature>
+						<feature mandatory="true" name="byAuthor">
+							<description>
+								Sorts by the authors of the books alphabetical.
+							</description>
+						</feature>
+						<feature mandatory="true" name="byGenre">
+							<description>
+								Sorts by the genre of the books alphabetical.
+							</description>
+						</feature>
+						<feature mandatory="true" name="byRating">
+							<description>
+								Sorts by the rating of the books.
+							</description>
+						</feature>
+					</or>
+					<feature name="Search">
+						<description>
+							Searches the collection for a specific book by doing a text search.
+						</description>
+					</feature>
+					<feature abstract="true" name="Import">
+						<description>
+							Import an existing collection of books into the system.
+						</description>
+					</feature>
+					<feature abstract="true" name="Export">
+						<description>
+							Exports an collection of books for external use.
+						</description>
+					</feature>
+				</and>
+				<alt mandatory="true" name="UI">
+					<description>
+						User Interface to manage the book collections
+					</description>
+					<description>
+						User Interface to manage the book collections
+					</description>
+					<and mandatory="true" name="GUI">
+						<description>
+							Graphical User Interface.
+						</description>
+						<description>
+							Graphical User Interface.
+						</description>
+						<alt abstract="true" mandatory="true" name="ColorSchemes">
+							<description>
+								Provides different color schemes for customization.
+							</description>
+							<description>
+								Provides different color schemes for customization.
+							</description>
+							<feature mandatory="true" name="Green">
+								<description>
+									Provides a green color scheme for the user interface.
+								</description>
+							</feature>
+							<feature mandatory="true" name="Blue">
+								<description>
+									Provides a blue color scheme for the user interface.
+								</description>
+							</feature>
+							<feature mandatory="true" name="Red">
+								<description>
+									Provides a red color scheme for the user interface.
+								</description>
+							</feature>
+							<feature mandatory="true" name="Default">
+								<description>
+									Provides a default color scheme for the user interface.
+								</description>
+							</feature>
+						</alt>
+						<and mandatory="true" name="Keys">
+							<description>
+								Provides keys for the User Interface.
+							</description>
+							<description>
+								Provides keys for the User Interface.
+							</description>
+							<feature name="SearchKey">
+								<description>
+									Key to trigger the search.
+								</description>
+							</feature>
+							<feature abstract="true" name="ImportKey">
+								<description>
+									Provides a key for the GUI to trigger the import.
+								</description>
+							</feature>
+							<feature abstract="true" name="ExportKey">
+								<description>
+									Provides a key for the GUI to trigger the export.
+								</description>
+							</feature>
+						</and>
+						<feature mandatory="true" name="Display">
+							<description>
+								Provides a display to show the book collections in raw form, sorted or the result of a search.
+							</description>
+						</feature>
+					</and>
+					<feature abstract="true" mandatory="true" name="CLI">
+						<description>
+							User Interface on the command line.
+						</description>
+					</feature>
+				</alt>
+				<feature abstract="true" name="ConnectMedium">
+					<description>
+						Connection with other mediums like music, films
+					</description>
+				</feature>
+				<feature abstract="true" name="Recommendation">
+					<description>
+						Recomends other books based on the books already read.
+					</description>
+				</feature>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>RateBook</var>
+					<var>Rating</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>byTitle</var>
+					<var>Title</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>byAuthor</var>
+					<var>Author</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>byGenre</var>
+					<var>Genre</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>byRating</var>
+					<var>Rating</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ImportKey</var>
+					<var>Import</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ExportKey</var>
+					<var>Export</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>SearchKey</var>
+					<var>Search</var>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>
