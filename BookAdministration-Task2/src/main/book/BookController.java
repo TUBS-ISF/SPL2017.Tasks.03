@@ -17,6 +17,16 @@ public class BookController {
 		test1.setPublisher("Vertrieb");
 		test1.setRating(12.0f);
 		this.addBook(test1);
+		
+		
+		Book test2 = new Book("test2");
+		test2.setAuthor("Paul");
+		test2.setGenre("SciFi");
+		test2.setRead(false);
+		test2.setIsbn(22222);
+		test2.setPublisher("Vertrieb2");
+		test2.setRating(1.0f);
+		this.addBook(test2);
 	}
 
 	private static BookController instance;

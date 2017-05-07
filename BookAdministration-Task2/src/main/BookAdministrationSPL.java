@@ -6,7 +6,6 @@ import main.book.BookController;
 import properties.PropertyManager;
 import main.GUI.GuiMain;
 
-import javax.swing.*;
 
 /**
  * Main Method to start the Application
@@ -22,6 +21,7 @@ public class BookAdministrationSPL {
 		if (PropertyManager.getProperty("GUI")) {
 			GuiMain gm = new GuiMain();
 		}
+	
 	}
 	
 	

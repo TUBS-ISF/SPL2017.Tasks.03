@@ -1,6 +1,7 @@
 package main.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,11 +28,22 @@ public class GuiMain extends JFrame {
 	
 	public GuiMain() {
 		setLayout(new BorderLayout());
+		
+		
 	    JButton button = new JButton("addBook");
 	    button.addActionListener(new AddBookListener());
-	    table = new JTable(this.fillTable(), this.createColumnNames());
 	    colNames = new Vector<String>();
+	    table = new JTable(this.fillTable(), this.createColumnNames()); //man kann auch Vectoren übergeben, damit variable?
 	    this.add(table, BorderLayout.CENTER);
+	    
+	    if (PropertyManager.getProperty("addBook")) {
+			this.add(button, BorderLayout.EAST);
+		}
+	    
+	    this.setSize(new Dimension (800,800));
+	    this.setVisible(true);
+	    this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    add(new JScrollPane(table));
 	}
 
 	//TODO als init-Methode auslagern
@@ -76,6 +88,7 @@ public class GuiMain extends JFrame {
 			columnNames[i] = colNames.get(i);
 		}
 		
+	
 		columnCount = columnNames.length;
 		return columnNames;
 		
@@ -87,40 +100,42 @@ public class GuiMain extends JFrame {
 		
 		Object[][] o = new Object[h.size()][7]; //TODO columnCount als 2. Dimension
 		
-		for(int i = 0; i<h.size(); i++) {
-			
+		
+		
+			int counter =0;
 			for(Number n: h.keySet()) {
 				
-				o[i][0] = h.get(n).getTitle();
+				o[counter][0] = h.get(n).getTitle();
 				
 				if (PropertyManager.getProperty("Author")) {
-					o[i][1] = h.get(n).getAuthor();
+					o[counter][1] = h.get(n).getAuthor();
 				}
 				
 				if (PropertyManager.getProperty("ISBN")) {
-					o[i][2] = h.get(n).getIsbn();
+					o[counter][2] = h.get(n).getIsbn();
 				}
 				
 				if (PropertyManager.getProperty("Genre")) {
-					o[i][3] = h.get(n).getGenre();
+					o[counter][3] = h.get(n).getGenre();
 				}
 				
 				if (PropertyManager.getProperty("Read")) {
-					o[i][4] = h.get(n).isRead();
+					o[counter][4] = h.get(n).isRead();
 				}
 				
 				if (PropertyManager.getProperty("Publisher")) {
-					o[i][5] = h.get(n).getPublisher();
+					o[counter][5] = h.get(n).getPublisher();
 				}
 				
 				if (PropertyManager.getProperty("Rating")) {
-					o[i][6] = h.get(n).getRating();
+					o[counter][6] = h.get(n).getRating();
 				}
+				counter++;
 				 		
 			}
 			
 			
-		}
+		
 		
 		return o;
 	}
