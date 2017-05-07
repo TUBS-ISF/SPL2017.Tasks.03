@@ -6,8 +6,20 @@ import properties.PropertyManager;
 import java.util.*;
 
 public class BookController {
+	
+	
+	public BookController() {
+		Book test1 = new Book("test1");
+		test1.setAuthor("Bob");
+		test1.setGenre("Krimi");
+		test1.setRead(true);
+		test1.setIsbn(2);
+		test1.setPublisher("Vertrieb");
+		test1.setRating(12.0f);
+		this.addBook(test1);
+	}
 
-	 private static BookController instance;
+	private static BookController instance;
 	static int bookKey = 0;
 	HashMap<Number, Book> bookCollection = new HashMap<Number, Book>();
 	
@@ -68,6 +80,12 @@ public class BookController {
 		addBook(book); 
 	}
 	
+	
+	
+	public HashMap<Number, Book> getBookCollection() {
+		return bookCollection;
+	}
+
 	public static BookController getInstance () {
 	    if (BookController.instance == null) {
 	    	BookController.instance = new BookController ();

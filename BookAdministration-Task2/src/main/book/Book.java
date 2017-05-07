@@ -13,8 +13,10 @@ public class Book {
 	boolean read;
 	String publisher;
 	float rating;
+	
 	int bookKey;
 	
+	//TODO HashMap mit 7 Attributswerten, Key als String mit Namen des Attributs, zum späteren Erkennen welche Attribute angewählt sind. (if(attribut=null))
 	
 	
 	public Book(String title) {

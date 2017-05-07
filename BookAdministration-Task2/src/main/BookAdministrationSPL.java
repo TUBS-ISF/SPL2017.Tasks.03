@@ -4,6 +4,9 @@ import java.io.IOException;
 
 import main.book.BookController;
 import properties.PropertyManager;
+import main.GUI.GuiMain;
+
+import javax.swing.*;
 
 /**
  * Main Method to start the Application
@@ -17,11 +20,14 @@ public class BookAdministrationSPL {
 		super();
 		BookController.getInstance();
 		if (PropertyManager.getProperty("GUI")) {
-			// get GUI .getInstance();
+			GuiMain gm = new GuiMain();
 		}
 	}
+	
 	
 	public static void main(String args0[]) throws IOException{
 		BookAdministrationSPL application = new BookAdministrationSPL(); 
 	}
+	
+	
 }

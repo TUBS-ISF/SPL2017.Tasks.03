@@ -64,12 +64,12 @@
 							Option to add a book to the collection.
 						</description>
 					</feature>
-					<feature name="deleteBook">
+					<feature abstract="true" name="deleteBook">
 						<description>
 							Option to delete a book from the collection
 						</description>
 					</feature>
-					<feature name="RateBook">
+					<feature abstract="true" name="RateBook">
 						<description>
 							A User can rate Books from his collection (after adding them)
 						</description>
@@ -89,28 +89,28 @@
 						<description>
 							Sorts the displayed list of books.
 						</description>
-						<feature mandatory="true" name="byTitle">
+						<feature abstract="true" mandatory="true" name="byTitle">
 							<description>
 								Sorts by the titles of the books alphabetical.
 							</description>
 						</feature>
-						<feature mandatory="true" name="byAuthor">
+						<feature abstract="true" mandatory="true" name="byAuthor">
 							<description>
 								Sorts by the authors of the books alphabetical.
 							</description>
 						</feature>
-						<feature mandatory="true" name="byGenre">
+						<feature abstract="true" mandatory="true" name="byGenre">
 							<description>
 								Sorts by the genre of the books alphabetical.
 							</description>
 						</feature>
-						<feature mandatory="true" name="byRating">
+						<feature abstract="true" mandatory="true" name="byRating">
 							<description>
 								Sorts by the rating of the books.
 							</description>
 						</feature>
 					</or>
-					<feature name="Search">
+					<feature abstract="true" name="Search">
 						<description>
 							Searches the collection for a specific book by doing a text search.
 						</description>
@@ -147,17 +147,17 @@
 							<description>
 								Provides different color schemes for customization.
 							</description>
-							<feature mandatory="true" name="Green">
+							<feature abstract="true" mandatory="true" name="Green">
 								<description>
 									Provides a green color scheme for the user interface.
 								</description>
 							</feature>
-							<feature mandatory="true" name="Blue">
+							<feature abstract="true" mandatory="true" name="Blue">
 								<description>
 									Provides a blue color scheme for the user interface.
 								</description>
 							</feature>
-							<feature mandatory="true" name="Red">
+							<feature abstract="true" mandatory="true" name="Red">
 								<description>
 									Provides a red color scheme for the user interface.
 								</description>
@@ -168,14 +168,14 @@
 								</description>
 							</feature>
 						</alt>
-						<and mandatory="true" name="Keys">
+						<and abstract="true" mandatory="true" name="Keys">
 							<description>
 								Provides keys for the User Interface.
 							</description>
 							<description>
 								Provides keys for the User Interface.
 							</description>
-							<feature name="SearchKey">
+							<feature abstract="true" name="SearchKey">
 								<description>
 									Key to trigger the search.
 								</description>
