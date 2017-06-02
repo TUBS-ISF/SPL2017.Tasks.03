@@ -88,7 +88,7 @@ public class GuiMain extends JFrame {
 		}
 		
 		if(attributMap.containsKey("Genre")) {
-			colNames.add("Read");
+			colNames.add("Genre");
 		}
 	
 		if(attributMap.containsKey("Read")) {
@@ -110,7 +110,7 @@ public class GuiMain extends JFrame {
 		
 	
 		columnCount = columnNames.length;
-		System.out.println(columnCount);
+
 		return columnNames;
 		
 	}
@@ -119,7 +119,7 @@ public class GuiMain extends JFrame {
 		
 		HashMap<Number, Book> h = BookController.getInstance().getBookCollection();
 
-		System.out.println(columnCount);
+		
 		
 		List<IAttribut> attributPlugins = PluginLoader.load(IAttribut.class);
 		
@@ -131,6 +131,7 @@ public class GuiMain extends JFrame {
 			attributMap.put(key, att); 
 		}
 		columnCount = attributMap.size();
+		System.out.println("ColumnCount in fillTable" + columnCount);
 		
 		Object[][] o = new Object[h.size()][columnCount];
 		
@@ -148,29 +149,9 @@ public class GuiMain extends JFrame {
                 	}
 				
                 bookCounter++;
-                
+            
 			}    
-//				o[counter][0] = h.get(n).getAttributMap().get("Title").getValue();
-//				
-//				/*if[Author]*/	
-//					o[counter][1] = h.get(n).getAttributMap().get("Author").getValue();
-//				/*end[Author]*/
-//			
-//				/*if[ISBN]*/	
-//					o[counter][2] = h.get(n).getAttributMap().get("ISBN").getValue();
-//				/*end[ISBN]*/
-//			
-//				/*if[Genre]*/	
-//					o[counter][3] = h.get(n).getAttributMap().get("Genre").getValue();
-//				/*end[Genre]*/
-//			
-//				/*if[Read]*/	
-//					o[counter][4] = h.get(n).getAttributMap().get("Read").getValue();
-//				/*end[Read]*/
-//			
-//				/*if[Publisher]*/	
-//					o[counter][5] = h.get(n).getAttributMap().get("Publisher").getValue();
-//				/*end[Publisher]*/
+
 //			
 //				/*if[Rating]*/	
 //					o[counter][6] = h.get(n).getAttributMap().get("Rating").getValue();

@@ -14,7 +14,7 @@ public class BookController {
 		test1.setAttribut("Genre", "Krimi");
 		test1.setAttribut("Read", "true");
 		test1.setAttribut("ISBN", "222");
-		test1.setAttribut("Publisher", "Vertrieb");
+		test1.setAttribut("Publisher", "HolzVertrieb");
 		test1.setAttribut("Rating", "4");
 		
 		
@@ -28,8 +28,17 @@ public class BookController {
 		test2.setAttribut("Publisher", "BergVertrieb");
 		test2.setAttribut("Rating", "2");
 		
-		
 		this.addBook(test2);
+		
+		Book test3 = new Book("Buch3");
+		test2.setAttribut("Author", "Steve");
+		test2.setAttribut("Genre", "ScFi");
+		test2.setAttribut("Read", "false");
+		test2.setAttribut("ISBN", "333");
+		test2.setAttribut("Publisher", "DorfVertrieb");
+		test2.setAttribut("Rating", "9");
+		
+		this.addBook(test3);
 	}
 
 	private static BookController instance;
