@@ -25,7 +25,6 @@ public class Book {
 
 	
 	public Book(String title) {
-		System.out.println("test");
 		List<IAttribut> attributPlugins = PluginLoader.load(IAttribut.class);
 		for(IAttribut att : attributPlugins){
 			String key = att.getClass().getName(); 

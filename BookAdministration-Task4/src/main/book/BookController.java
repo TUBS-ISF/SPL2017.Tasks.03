@@ -9,23 +9,25 @@ public class BookController {
 	
 	public BookController() {
 		
-		Book test1 = new Book("test1");
+		Book test1 = new Book("Buch1");
+		test1.setAttribut("Author", "Bob");
 		test1.setAttribut("Genre", "Krimi");
 		test1.setAttribut("Read", "true");
 		test1.setAttribut("ISBN", "222");
 		test1.setAttribut("Publisher", "Vertrieb");
 		test1.setAttribut("Rating", "4");
-		test1.setAttribut("Author", "Bob");
+		
 		
 		this.addBook(test1);
 		
-		Book test2 = new Book("test2");
-		test2.setAttribut("Genre", "Krimi");
-		test2.setAttribut("Read", "true");
-		test2.setAttribut("ISBN", "222");
-		test2.setAttribut("Publisher", "Vertrieb");
-		test2.setAttribut("Rating", "4");
-		test2.setAttribut("Author", "Bob");
+		Book test2 = new Book("Buch2");
+		test2.setAttribut("Author", "Paul");
+		test2.setAttribut("Genre", "Roman");
+		test2.setAttribut("Read", "false");
+		test2.setAttribut("ISBN", "111");
+		test2.setAttribut("Publisher", "BergVertrieb");
+		test2.setAttribut("Rating", "2");
+		
 		
 		this.addBook(test2);
 	}

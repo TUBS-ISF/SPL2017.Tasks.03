@@ -27,7 +27,7 @@ public class GuiMain extends JFrame {
 	int columnCount = 0;
 	JTable table = null;
 	Vector<String> colNames;
-	HashMap<Number, Book> h;
+	
 	
 	public GuiMain() {
 		setLayout(new BorderLayout());
@@ -47,7 +47,6 @@ public class GuiMain extends JFrame {
 	    this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	    add(new JScrollPane(table));
 	    
-		h = BookController.getInstance().getBookCollection();
 
 	}
 
@@ -118,42 +117,68 @@ public class GuiMain extends JFrame {
 	
 	public Object[][] fillTable() {
 		
-		
-		Object[][] o = new Object[h.size()][columnCount]; //TODO columnCount als 2. Dimension
-		
-		
-			int counter =0;
-			for(Number n: h.keySet()) {
-				
-				o[counter][0] = h.get(n).getAttributMap().get("Title").getValue();
-				
-				/*if[Author]*/	
-					o[counter][1] = h.get(n).getAttributMap().get("Author").getValue();
-				/*end[Author]*/
-			
-				/*if[ISBN]*/	
-					o[counter][2] = h.get(n).getAttributMap().get("ISBN").getValue();
-				/*end[ISBN]*/
-			
-				/*if[Genre]*/	
-					o[counter][3] = h.get(n).getAttributMap().get("Genre").getValue();
-				/*end[Genre]*/
-			
-				/*if[Read]*/	
-					o[counter][4] = h.get(n).getAttributMap().get("Read").getValue();
-				/*end[Read]*/
-			
-				/*if[Publisher]*/	
-					o[counter][5] = h.get(n).getAttributMap().get("Publisher").getValue();
-				/*end[Publisher]*/
-			
-				/*if[Rating]*/	
-					o[counter][6] = h.get(n).getAttributMap().get("Rating").getValue();
-				/*end[Rating]*/
+		HashMap<Number, Book> h = BookController.getInstance().getBookCollection();
 
-				counter++;
+		System.out.println(columnCount);
+		
+		List<IAttribut> attributPlugins = PluginLoader.load(IAttribut.class);
+		
+		HashMap<String, IAttribut> attributMap = new HashMap<String,IAttribut >();
+
+		
+		for(IAttribut att : attributPlugins){
+			String key = att.getClass().getName(); 
+			attributMap.put(key, att); 
+		}
+		columnCount = attributMap.size();
+		
+		Object[][] o = new Object[h.size()][columnCount];
+		
+		
+			int bookCounter =0;
+			for(Number n: h.keySet()) {	
+				
+				int atrCounter = 0;
+                for(String key : h.get(n).getAttributMap().keySet()) {
+                		
+                		
+                		IAttribut atr = h.get(n).getAttributMap().get(key);
+                		o[bookCounter][atrCounter] = atr.getValue();
+                		atrCounter++;
+                	}
+				
+                bookCounter++;
+                
+			}    
+//				o[counter][0] = h.get(n).getAttributMap().get("Title").getValue();
+//				
+//				/*if[Author]*/	
+//					o[counter][1] = h.get(n).getAttributMap().get("Author").getValue();
+//				/*end[Author]*/
+//			
+//				/*if[ISBN]*/	
+//					o[counter][2] = h.get(n).getAttributMap().get("ISBN").getValue();
+//				/*end[ISBN]*/
+//			
+//				/*if[Genre]*/	
+//					o[counter][3] = h.get(n).getAttributMap().get("Genre").getValue();
+//				/*end[Genre]*/
+//			
+//				/*if[Read]*/	
+//					o[counter][4] = h.get(n).getAttributMap().get("Read").getValue();
+//				/*end[Read]*/
+//			
+//				/*if[Publisher]*/	
+//					o[counter][5] = h.get(n).getAttributMap().get("Publisher").getValue();
+//				/*end[Publisher]*/
+//			
+//				/*if[Rating]*/	
+//					o[counter][6] = h.get(n).getAttributMap().get("Rating").getValue();
+//				/*end[Rating]*/
+
+				
 				 		
-			}
+			
 			
 		return o;
 	}
