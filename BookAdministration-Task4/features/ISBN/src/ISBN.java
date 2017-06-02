@@ -10,10 +10,12 @@ public class ISBN implements IAttribut{
 		this.isbn = string;
 	}
 	
+	@Override
 	public String getValue(){
 		return isbn;
 	}
 	
+	@Override
 	public void setValue(String string){
 		this.isbn = string;
 	}

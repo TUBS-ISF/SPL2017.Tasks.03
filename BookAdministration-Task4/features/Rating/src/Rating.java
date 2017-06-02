@@ -10,10 +10,12 @@ public class Rating implements IAttribut{
 		this.rating = string;
 	}
 	
+	@Override
 	public String getValue(){
 		return rating;
 	}
 	
+	@Override
 	public void setValue(String string){
 		this.rating = string;
 	}

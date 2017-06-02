@@ -10,10 +10,12 @@ public class Read implements IAttribut{
 		this.read = string;
 	}
 	
+	@Override
 	public String getValue(){
 		return read;
 	}
 	
+	@Override
 	public void setValue(String string){
 		this.read = string;
 	}

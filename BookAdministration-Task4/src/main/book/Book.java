@@ -25,11 +25,10 @@ public class Book {
 
 	
 	public Book(String title) {
+		System.out.println("test");
 		List<IAttribut> attributPlugins = PluginLoader.load(IAttribut.class);
-		System.out.println(attributPlugins.size());
 		for(IAttribut att : attributPlugins){
 			String key = att.getClass().getName(); 
-			System.out.println(key);
 			attributMap.put(key, att); 
 		}
 		

@@ -111,6 +111,7 @@ public class GuiMain extends JFrame {
 		
 	
 		columnCount = columnNames.length;
+		System.out.println(columnCount);
 		return columnNames;
 		
 	}

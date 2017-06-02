@@ -10,10 +10,12 @@ public class Publisher implements IAttribut{
 		this.publisher = string;
 	}
 	
+	@Override
 	public String getValue(){
 		return publisher;
 	}
 	
+	@Override
 	public void setValue(String string){
 		this.publisher = string;
 	}

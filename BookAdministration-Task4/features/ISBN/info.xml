@@ -2,5 +2,5 @@
 <plugins>
 		<interface id="interfaces.IAttribut">
 			<class>ISBN</class>
-<		</interface>
+		</interface>
 </plugins>

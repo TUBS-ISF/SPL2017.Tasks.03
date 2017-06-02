@@ -9,10 +9,12 @@ public class Genre implements IAttribut{
 		this.genre = string;
 	}
 	
+	@Override
 	public String getValue(){
 		return genre;
 	}
 	
+	@Override
 	public void setValue(String string){
 		this.genre = string;
 	}
