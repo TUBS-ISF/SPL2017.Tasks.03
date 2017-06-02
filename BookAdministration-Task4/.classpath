@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="jars/Author/Author.jar"/>
+	<classpathentry kind="lib" path="jars/Collection/Collection.jar"/>
+	<classpathentry kind="lib" path="jars/Display/Display.jar"/>
+	<classpathentry kind="lib" path="jars/GUI/GUI.jar"/>
+	<classpathentry kind="lib" path="jars/Genre/Genre.jar"/>
+	<classpathentry kind="lib" path="jars/ISBN/ISBN.jar"/>
+	<classpathentry kind="lib" path="jars/Publisher/Publisher.jar"/>
+	<classpathentry kind="lib" path="jars/Rating/Rating.jar"/>
+	<classpathentry kind="lib" path="jars/Read/Read.jar"/>
+	<classpathentry kind="lib" path="jars/Title/Title.jar"/>
+	<classpathentry kind="lib" path="jars/UI/UI.jar"/>
+	<classpathentry kind="lib" path="jars/addBook/addBook.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
