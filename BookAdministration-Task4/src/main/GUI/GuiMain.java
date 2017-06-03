@@ -155,13 +155,13 @@ public class GuiMain extends JFrame {
                 		
                 		IAttribut atr = h.get(n).getAttributMap().get(key);
                 		o[bookCounter][atrCounter] = atr.getValue();
+                		System.out.println("geschriebenes Value:" + o[bookCounter][atrCounter].toString());
                 		//System.out.println(o[bookCounter][atrCounter] = atr.getValue());
                 		atrCounter++;
                 		//System.out.println(atrCounter);
                 	}
 				
                 bookCounter++;
-                System.out.println("Book?" + h.get(n));
                 System.out.println(bookCounter);
             
 			}    

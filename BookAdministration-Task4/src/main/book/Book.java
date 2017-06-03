@@ -15,7 +15,7 @@ import loader.PluginLoader;
 public class Book {
 	
 	//HashMap mit allen angewählten AttributsPlugins
-	private final HashMap<String, IAttribut> attributMap = new HashMap<String,IAttribut >();
+	private HashMap<String, IAttribut> attributMap = new HashMap<String,IAttribut >();
 	
 	int bookKey;
 	
