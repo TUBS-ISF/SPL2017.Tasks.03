@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import interfaces.IAttribut;
+import interfaces.IButton;
 import loader.PluginLoader;
 
 import java.util.HashMap;
@@ -27,6 +28,8 @@ public class GuiMain extends JFrame {
 	int columnCount = 0;
 	JTable table = null;
 	Vector<String> colNames;
+	private final HashMap<String, IButton> iButtonHashMap = new HashMap<String,IButton>();
+	private final HashMap<String, JButton> buttons = new HashMap<String,JButton>();
 	
 	
 	public GuiMain() {
@@ -38,9 +41,9 @@ public class GuiMain extends JFrame {
 	    table = new JTable(this.fillTable(), this.createColumnNames()); //man kann auch Vectoren übergeben, damit variable?
 	    this.add(table, BorderLayout.CENTER);
 	    
-//	    JButton addButton = new JButton("addBook");
-//	    addButton.addActionListener(new AddBookListener());
-//		this.add(button, BorderLayout.EAST);
+	    initIButtonHashMap();
+	    placeButtons();
+	    
 	  
 	    this.setSize(new Dimension (800,800));
 	    this.setVisible(true);
@@ -74,34 +77,40 @@ public class GuiMain extends JFrame {
 		String[] columnNames = new String[attributMap.size()];
 		
 		
-		//
-		
-		// Title is mandatory
-		colNames.add("Title");
-		
-		if(attributMap.containsKey("Author")) {
-			colNames.add("Author");
-		}
 
-		if(attributMap.containsKey("ISBN")) {
-			colNames.add("ISBN");
-		}
-		
-		if(attributMap.containsKey("Genre")) {
-			colNames.add("Genre");
-		}
-	
 		if(attributMap.containsKey("Read")) {
 			colNames.add("Read");
 		}
 		
-		if(attributMap.containsKey("Publisher")) {
-			colNames.add("Publisher");
+		if(attributMap.containsKey("ISBN")) {
+			colNames.add("ISBN");
 		}
 		
 		if(attributMap.containsKey("Rating")) {
 			colNames.add("Rating");
 		}	
+	
+		if(attributMap.containsKey("Author")) {
+			colNames.add("Author");
+		}
+
+		//Title is mandatory
+		
+		if(attributMap.containsKey("Title")) {
+			colNames.add("Title");
+		}
+
+		
+		if(attributMap.containsKey("Genre")) {
+			colNames.add("Genre");
+		}
+	
+		
+		if(attributMap.containsKey("Publisher")) {
+			colNames.add("Publisher");
+		}
+		
+
 		
 			
 		for(int i=0; i< colNames.size(); i++) {
@@ -119,19 +128,18 @@ public class GuiMain extends JFrame {
 		
 		HashMap<Number, Book> h = BookController.getInstance().getBookCollection();
 
-		
-		
+				
 		List<IAttribut> attributPlugins = PluginLoader.load(IAttribut.class);
 		
 		HashMap<String, IAttribut> attributMap = new HashMap<String,IAttribut >();
 
 		
 		for(IAttribut att : attributPlugins){
-			String key = att.getClass().getName(); 
+			String key = att.getClass().getName();
 			attributMap.put(key, att); 
 		}
 		columnCount = attributMap.size();
-		System.out.println("ColumnCount in fillTable" + columnCount);
+		//System.out.println("ColumnCount in fillTable" + columnCount);
 		
 		Object[][] o = new Object[h.size()][columnCount];
 		
@@ -139,33 +147,51 @@ public class GuiMain extends JFrame {
 			int bookCounter =0;
 			for(Number n: h.keySet()) {	
 				
+				
+				//System.out.println(h.get(n).getAttributMap().keySet());
 				int atrCounter = 0;
                 for(String key : h.get(n).getAttributMap().keySet()) {
                 		
                 		
                 		IAttribut atr = h.get(n).getAttributMap().get(key);
                 		o[bookCounter][atrCounter] = atr.getValue();
+                		//System.out.println(o[bookCounter][atrCounter] = atr.getValue());
                 		atrCounter++;
+                		//System.out.println(atrCounter);
                 	}
 				
                 bookCounter++;
+                System.out.println("Book?" + h.get(n));
+                System.out.println(bookCounter);
             
 			}    
-
-//			
-//				/*if[Rating]*/	
-//					o[counter][6] = h.get(n).getAttributMap().get("Rating").getValue();
-//				/*end[Rating]*/
-
-				
-				 		
+		
 			
 			
 		return o;
 	}
 	
 
+	private void initIButtonHashMap() {
+		List<IButton> buttonPlugins = PluginLoader.load(IButton.class);
+		for(IButton button : buttonPlugins) {
+			String key = button.getClass().getName(); 
+			iButtonHashMap.put(key, button); 
+		}
+	}
 	
+
+	private void placeButtons() {
+		for(String key : iButtonHashMap.keySet()) {
+			JButton button = iButtonHashMap.get(key).getButton(); 
+			
+			if(iButtonHashMap.containsKey("AddBook")) {
+				button.addActionListener(new AddBookListener());
+				this.add(button, BorderLayout.EAST);
+			}
+			buttons.put(key, button);
+		}		
+	}
 }
 
 

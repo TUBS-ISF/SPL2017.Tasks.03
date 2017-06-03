@@ -31,7 +31,7 @@ public class Book {
 			attributMap.put(key, att); 
 		}
 		
-	//attributMap.get("Title").setValue(title);
+	attributMap.get("Title").setValue(title);
 
 	}
 

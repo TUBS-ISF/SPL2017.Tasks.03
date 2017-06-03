@@ -31,12 +31,12 @@ public class BookController {
 		this.addBook(test2);
 		
 		Book test3 = new Book("Buch3");
-		test2.setAttribut("Author", "Steve");
-		test2.setAttribut("Genre", "ScFi");
-		test2.setAttribut("Read", "false");
-		test2.setAttribut("ISBN", "333");
-		test2.setAttribut("Publisher", "DorfVertrieb");
-		test2.setAttribut("Rating", "9");
+		test3.setAttribut("Author", "Steve");
+		test3.setAttribut("Genre", "ScFi");
+		test3.setAttribut("Read", "false");
+		test3.setAttribut("ISBN", "333");
+		test3.setAttribut("Publisher", "DorfVertrieb");
+		test3.setAttribut("Rating", "9");
 		
 		this.addBook(test3);
 	}
@@ -99,7 +99,9 @@ public class BookController {
 	}
 
 	public static BookController getInstance () {
+//		System.out.println("BookInstanz");
 	    if (BookController.instance == null) {
+//	    	System.out.println("BookInstanzt neu angelegt");
 	    	BookController.instance = new BookController ();
 	    }
 	    return BookController.instance;
