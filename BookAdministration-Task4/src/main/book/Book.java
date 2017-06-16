@@ -31,7 +31,7 @@ public class Book {
 			attributMap.put(key, att); 
 		}
 		
-	System.out.println("Größe:" + attributMap.size());	
+	System.out.println("Test der Größe:" + attributMap.size());	
 
 	attributMap.get("Title").setValue(title);
 
