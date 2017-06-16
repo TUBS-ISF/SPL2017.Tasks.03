@@ -1,22 +1,24 @@
+
 import interfaces.IAttribut;
 
-public class Author implements IAttribut{
+public class Title implements IAttribut{
 
-	String author;
+	//später auf boolean, zum Sortieren
+	String title;
 	
 	@Override
 	public void init(String string) {
-		this.author = string;
+		this.title = string;
 	}
 	
 	@Override
 	public String getValue(){
-		return author;
+		return title;
 	}
 	
 	@Override
 	public void setValue(String string){
-		this.author = string;
+		this.title = string;
 	}
 	
 }
