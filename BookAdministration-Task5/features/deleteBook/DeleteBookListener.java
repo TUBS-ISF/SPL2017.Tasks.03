@@ -6,9 +6,18 @@ public class DeleteBookListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Delete Book:This feature will be implementet");
-		//TODO popUpFenster für addbook, Eintragen der Daten, neues BookObjekt erstellen, abhängig von der Variante werden bestimmte Eingaben erlaubt
-		// Fenster wieder schließen
+		System.out.println("Delete Book: Work in progress");
+		
+		int chosen = GuiMain.getInstance().table.getSelectedRow();
+		int next = GuiMain.getInstance().table.convertRowIndexToModel(chosen);
+
+		
+//		selectedBook = booksList.get(table.convertRowIndexToModel(selectedRow));
+		
+		BookController.getInstance().deleteBook(next);
+		
+		System.out.println("Delete "+chosen);
+		
 	}
 	
 }

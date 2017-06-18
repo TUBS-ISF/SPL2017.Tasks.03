@@ -19,31 +19,25 @@ public class GuiMain extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
-	
+	public static GuiMain instance = null;
 	JTable table = null;
 	Vector<String> colNames;
 	HashMap<Number, Book> h;
 	int columnCount = 10;
 	String[] columnNames = new String[columnCount];
 	Book[] tempBooks = new Book[10];
-	Object[][] o = new Object[10][columnCount]; // benötigt?
+	Object[][] o = new Object[10][columnCount];
 	int atrCounter = 0;
 	int bookCounter =0;
-	
-
-	//private final HashMap<String, IButton> iButtonHashMap = new HashMap<String,IButton>();
-	
-	//private final HashMap<String, JButton> buttons = new HashMap<String,JButton>();
-	
+		
 	
 	public GuiMain() {
+		
+		instance = this;
 		
 		setLayout(new BorderLayout());
 		
 		this.init();
-//	    initIButtonHashMap();
-//	    placeButtons();
-
 	  
 	    this.setSize(new Dimension (800,800));
 	    this.setVisible(true);
@@ -53,7 +47,7 @@ public class GuiMain extends JFrame {
 	    add(new JScrollPane(table));
 	    
 	}
-	
+	//TODO Teile als refresh auslagern/wiederverwenden für Änderungen in der Collection
 	public void init() {
 	
 		h = BookController.getInstance().getBookCollection();
@@ -70,15 +64,26 @@ public class GuiMain extends JFrame {
 	  
 	    
 	    //ebenfalls für das Object O hier anpassen
-	    Object[][] o2 = new Object[h.size()][h.get(1).attributsNumber];
+	    
 	    
 	    
 	    //Forschleife zum rüberkopieren
 	    
 	    this.fillTable();
-	    table = new JTable(o, correctColumnNames); //man kann auch Vectoren übergeben, damit variable?
+	    
+	    Object[][] o2 = new Object[h.size()][h.get(1).attributsNumber];
+	    
+	    //BuildAround um einen Konzept/Plannungsfehler meinerseits
+	    for(int i = 0;i <h.size(); i++) {
+	    	for(int j = 0; j<h.get(1).attributsNumber;j++) {
+	    		o2[i][j] = o[i][j];
+	    	}
+	    }
+	    
+	    table = new JTable(o2, correctColumnNames); //man kann auch Vectoren übergeben, damit variable?
 	    this.add(table, BorderLayout.CENTER);
 		
+	    
 	}
 
 	
@@ -123,26 +128,14 @@ public class GuiMain extends JFrame {
 		table.setBackground(Color.GRAY);
 	}
 	
-//	private void initIButtonHashMap() {
-//		List<IButton> buttonPlugins = PluginLoader.load(IButton.class);
-//		for(IButton button : buttonPlugins) {
-//			String key = button.getClass().getName(); 
-//			iButtonHashMap.put(key, button); 
-//		}
-//	}
-//	
-//
-//	private void placeButtons() {
-//		for(String key : iButtonHashMap.keySet()) {
-//			JButton button = iButtonHashMap.get(key).getButton(); 
-//			
-//			if(iButtonHashMap.containsKey("AddBook")) {
-//				button.addActionListener(new AddBookListener());
-//				this.add(button, BorderLayout.EAST);
-//			}
-//			buttons.put(key, button);
-//		}		
-//	}
+	public static GuiMain getInstance() {
+		
+		if(instance == null) {
+			instance = new GuiMain();
+		}
+		return instance;
+	}
+
 }
 
 
