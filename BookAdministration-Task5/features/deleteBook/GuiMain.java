@@ -21,9 +21,11 @@ public class GuiMain extends JFrame {
 	
 	public GuiMain() {
 		
+		
 	    JButton deleteButton = new JButton("deleteBook");
 	    deleteButton.addActionListener(new DeleteBookListener());
-	    this.add(deleteButton, BorderLayout.EAST);
+	    this.add(deleteButton, BorderLayout.SOUTH);
+	    
 	}    
 	
 }

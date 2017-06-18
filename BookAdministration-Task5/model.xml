@@ -140,7 +140,7 @@
 						<description>
 							Graphical User Interface.
 						</description>
-						<or mandatory="true" name="ColorSchemes">
+						<alt mandatory="true" name="ColorSchemes">
 							<description>
 								Provides different color schemes for customization.
 								Normally OR, but cause of a saving bug in the configs its changed for convenient.
@@ -169,7 +169,7 @@
 									Provides a default color scheme for the user interface.
 								</description>
 							</feature>
-						</or>
+						</alt>
 						<and abstract="true" mandatory="true" name="Keys">
 							<description>
 								Provides keys for the User Interface.
@@ -281,6 +281,7 @@
 			<feature name="Collection"/>
 			<feature name="UI"/>
 			<feature name="GUI"/>
+			<feature name="deleteBook"/>
 			<feature name="addBook"/>
 			<feature name="ColorSchemes"/>
 			<feature name="Green"/>

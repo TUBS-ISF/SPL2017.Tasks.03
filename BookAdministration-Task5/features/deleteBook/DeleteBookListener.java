@@ -2,7 +2,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddBookListener implements ActionListener {
+public class DeleteBookListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

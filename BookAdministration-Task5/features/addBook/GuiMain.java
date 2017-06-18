@@ -24,6 +24,7 @@ public class GuiMain extends JFrame {
 	    JButton addButton = new JButton("addBook");
 	    addButton.addActionListener(new AddBookListener());
 	    this.add(addButton, BorderLayout.EAST);
+	    
 	}    
 	
 }
