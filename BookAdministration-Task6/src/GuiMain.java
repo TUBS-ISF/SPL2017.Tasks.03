@@ -43,9 +43,7 @@ public class GuiMain extends JFrame {
 		setLayout(new BorderLayout());
 		
 		this.init();
-		
-		System.out.println("AttNumb "+this.attributsNumber);
-	  
+		  
 	    this.setSize(new Dimension (800,800));
 	    this.setVisible(true);
 	    this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -54,7 +52,7 @@ public class GuiMain extends JFrame {
 	    add(new JScrollPane(table));
 	    
 	}
-	//TODO Teile als refresh auslagern/wiederverwenden für Änderungen in der Collection
+
 	public void init() {
 	
 		h = BookController.getInstance().getBookCollection();
@@ -68,12 +66,7 @@ public class GuiMain extends JFrame {
 	    for(int i=0; i< correctColumnNames.length; i++) {
 	    	correctColumnNames[i] = columnNames[i];
 		}
-	        
-	    //ebenfalls für das Object O hier anpassen
-	    
-	  	    
-	    //Forschleife zum rüberkopieren
-	    
+	        	    
 	    this.fillTable();
 	    
 	    Object[][] o2 = new Object[h.size()][this.attributsNumber];
@@ -85,14 +78,12 @@ public class GuiMain extends JFrame {
 	    	}
 	    }
 	    
-	    table = new JTable(o2, correctColumnNames); //man kann auch Vectoren übergeben, damit variable?
+	    table = new JTable(o2, correctColumnNames);
 	    this.add(table, BorderLayout.CENTER);
-		
 	    
 	}
 
-	
-	
+
 	public void createColumnNames() {
 		
 				
@@ -112,15 +103,11 @@ public class GuiMain extends JFrame {
 			// Konzept:
 			tempBooks[bookCounter] = h.get(n);
 			System.out.println("n " + n);
-			this.fillBook(atrCounter, bookCounter);
 			
-			
-			o[bookCounter][atrCounter] = tempBooks[bookCounter].getTitle();
-			System.out.println(tempBooks[bookCounter].getTitle());
-			atrCounter++;
-//			original();
-			
+			this.fillBook();
+				
 			bookCounter++;
+			
 			atrCounter = 0;	
 			
 			}    
@@ -144,7 +131,7 @@ public class GuiMain extends JFrame {
 		return instance;
 	}
 	
-	public void fillBook (int atrCounter, int bookCounter){
+	public void fillBook (){
 		//Leere Methode als Jointpoint für die Aspekte
 	}
 

@@ -20,8 +20,18 @@ public aspect Author {
 		System.out.println("Author added");
 	}
 	
-	after(): execution(public void GuiMain.fillBook()) {
+	before(): execution(public void GuiMain.fillBook()) {
 		
-//		GuiMain.getInstance().o[GuiMain.getInstance().bookCounter][GuiMain.getInstance().atrCounter] = GuiMain.getInstance().tempBooks[[GuiMain.getInstance().bookCounter].getAuthor;
+		GuiMain.getInstance().o[GuiMain.getInstance().bookCounter][GuiMain.getInstance().atrCounter] = GuiMain.getInstance().tempBooks[GuiMain.getInstance().bookCounter].getAuthor();
+		GuiMain.getInstance().atrCounter++;
+//		System.out.println("test fill Author");
+	}
+	
+	//Testdaten
+	
+	after(): execution (public void BookController.addTestdata()) {
+		BookController.getInstance().test1.setAuthor("Bob");
+		BookController.getInstance().test2.setAuthor("Paul");
+		BookController.getInstance().test3.setAuthor("Steve");
 	}
 }

@@ -5,7 +5,6 @@ import java.io.IOException;
 
 /**
  * Main Method to start the Application
- * TODO add decision for GUI or CLI
  * @author Niklas
  * 
  */
